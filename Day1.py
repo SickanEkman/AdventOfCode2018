@@ -1,42 +1,43 @@
 import sys
 
+
+set_w_frequencies = set()
+counter = 0
+
+
 def open_file_list():
     with open("utils/Day1_list.txt", "r") as fin:
-        numbers = fin.read()
-        return numbers
+        data = fin.read()
+        return data
 
 
-def split_numbers(numbers):
-    numbers_list = numbers.split("\n")
-    return numbers_list
+def split_numbers(data):
+    data_list = data.split("\n")
+    return data_list
 
 
 def count(numbers_list):
-    counter = 0
+    global counter
     for i in numbers_list:
         try:
             counter += int(i)
+            check_if_frequency_exist(counter)
         except ValueError:
             pass
     print("Sum:", counter)
 
 
-def check_duplicates(numbers_list, counter=0):
-    set_w_frequencies = set()
-    for i in numbers_list:
-        if counter in set_w_frequencies:
-            print("First duplicate:", counter)
-            sys.exit(0)
-        else:
-            set_w_frequencies.add(counter)
-        try:
-            counter += int(i)
-        except ValueError:
-            pass
+def check_if_frequency_exist(frequency):
+    global set_w_frequencies
+    if frequency in set_w_frequencies:
+        print("First duplicate:", frequency)
+        sys.exit(0)
+    else:
+        set_w_frequencies.add(counter)
+
 
 if __name__ == "__main__":
     numbers = open_file_list()
-    numbers_list = split_numbers(numbers)
-    count(numbers_list)
+    l_numbers = split_numbers(numbers)
     while True:
-        check_duplicates(numbers_list)
+        count(l_numbers)
