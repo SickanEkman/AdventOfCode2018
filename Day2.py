@@ -5,6 +5,7 @@ twos = 0
 threes = 0
 list_w_id_sets = []
 
+
 def open_file_list():
     with open("utils/Day2_list.txt", "r") as fin:
         data = fin.read()
@@ -45,6 +46,7 @@ def find_correct_boxes(the_id, l_id):
         if counter == 25:
             find_shared_letters(list_the_id, list_any_id)
 
+
 def find_shared_letters(id_one, id_two):
     letters = []
     for number in range(len(id_one)):
@@ -61,5 +63,5 @@ if __name__ == "__main__":
     id_list = split_ids(ids)
     count_letters(id_list)
     print("Twos:", twos, "Threes:", threes, "Checksum:", twos * threes)
-    for i in id_list:
-        find_correct_boxes(i, id_list)
+    for x in id_list:
+        find_correct_boxes(x, id_list)
