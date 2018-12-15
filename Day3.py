@@ -1,7 +1,3 @@
-import re
-
-
-claim_dict = {}
 claimed_inch = set()
 double_claimed_inch = set()
 
@@ -50,10 +46,6 @@ class Claim:
                 self.claimed_inches.append((h_point, v_point))
 
 
-def add_object_to_dict(obj):
-    claim_dict[obj.claim_id] = obj
-
-
 def register_claimed_inches(obj):
     for square_inch in obj.claimed_inches:
         if square_inch not in claimed_inch:
@@ -68,5 +60,4 @@ if __name__ == "__main__":
     for c in claim_list:
         claim_object = Claim(c)
         register_claimed_inches(claim_object)
-    print(claimed_inch)
-    print(double_claimed_inch)
+    print(len(double_claimed_inch))
