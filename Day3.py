@@ -1,5 +1,8 @@
 claimed_inch = set()
 double_claimed_inch = set()
+all_claim_ids = set()
+all_double_claiming_claim_ids = set()
+
 
 def open_file_list():
     with open("utils/Day3_list.txt", "r") as fin:
@@ -45,6 +48,10 @@ class Claim:
             for v_point in vert_list:
                 self.claimed_inches.append((h_point, v_point))
 
+"""
+def check_if_claim_is_uique():
+    pass
+"""
 
 def register_claimed_inches(obj):
     for square_inch in obj.claimed_inches:
@@ -54,10 +61,17 @@ def register_claimed_inches(obj):
             double_claimed_inch.add(square_inch)
 
 
+"""def find_unique_claim():
+    print(len(all_claim_ids))
+    print(len(all_double_claiming_claim_ids))
+    #print(all_claim_ids.difference(all_double_claiming_claim_ids))
+"""
+
 if __name__ == "__main__":
     claim_data = open_file_list()
     claim_list = string_to_list(claim_data)
     for c in claim_list:
         claim_object = Claim(c)
         register_claimed_inches(claim_object)
+    print(len(claimed_inch))
     print(len(double_claimed_inch))
