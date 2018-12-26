@@ -1,18 +1,10 @@
+from utils.utils import open_file, string_to_list
+
+
 claimed_inch = set()
 double_claimed_inch = set()
 all_claim_ids = set()
 all_double_claiming_claim_ids = set()
-
-
-def open_file_list():
-    with open("utils/Day3_list.txt", "r") as fin:
-        data = fin.read()
-        return data
-
-
-def string_to_list(data):
-    data_list = data.split("\n")
-    return data_list
 
 
 class Claim:
@@ -68,10 +60,9 @@ def register_claimed_inches(obj):
 """
 
 if __name__ == "__main__":
-    claim_data = open_file_list()
+    claim_data = open_file("utils/Day3_list.txt")
     claim_list = string_to_list(claim_data)
     for c in claim_list:
         claim_object = Claim(c)
         register_claimed_inches(claim_object)
-    print(len(claimed_inch))
     print(len(double_claimed_inch))

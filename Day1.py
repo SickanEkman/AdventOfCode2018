@@ -1,19 +1,9 @@
 import sys
+from utils.utils import open_file, string_to_list
 
 
 set_w_frequencies = set()
 counter = 0
-
-
-def open_file_list():
-    with open("utils/Day1_list.txt", "r") as fin:
-        data = fin.read()
-        return data
-
-
-def split_numbers(data):
-    data_list = data.split("\n")
-    return data_list
 
 
 def count(numbers_list):
@@ -37,7 +27,7 @@ def check_if_frequency_exist(frequency):
 
 
 if __name__ == "__main__":
-    numbers = open_file_list()
-    l_numbers = split_numbers(numbers)
+    numbers = open_file("utils/Day1_list.txt")
+    l_numbers = string_to_list(numbers)
     while True:
         count(l_numbers)
